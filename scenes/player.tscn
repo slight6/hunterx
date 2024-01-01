@@ -414,7 +414,7 @@ animations = [{
 }]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_1dik4"]
-radius = 6.08276
+radius = 6.0
 
 [node name="player" type="CharacterBody2D"]
 script = ExtResource("1_aicnw")
@@ -427,5 +427,5 @@ offset = Vector2(0, -15)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 y_sort_enabled = true
-position = Vector2(-1, -16)
+position = Vector2(-1, -18)
 shape = SubResource("CircleShape2D_1dik4")
