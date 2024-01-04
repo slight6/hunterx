@@ -1,0 +1,19 @@
+TODO list for test game
+
+Have a simple inventory screen with a 3x3 grid layout.
+Implement the action of planting seeds from inventory, watering plant and picking the flowers.
+Combat mechanic to battle flies, mice, and birds
+Points for scoring and leveling the character and enemies. Not too concerned with leveling the map, but it will help in any future games. 
+Saving and Loading game files would just be a nice feature to learn about.
+
+For the sake of keeping the code simple, and for ease of memory/documentation, I think the following commands will be useful -
+        space bar - attack or swat enemies
+        'p' key - plant a seed
+        'w' key - water a plant
+        'h' key - harvest a flower
+        'i' key - to open and close inventory screen
+        The arrow keys to move around
+
+probably forgot a couple of things, but this is the bulk of it. 
+
+
