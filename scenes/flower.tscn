@@ -1,0 +1,79 @@
+[gd_scene load_steps=10 format=3 uid="uid://i54lc65j1l6b"]
+
+[ext_resource type="Texture2D" uid="uid://ceyqnatkvykrc" path="res://art/tilesets/add-on/objects.png" id="1_qtnpt"]
+[ext_resource type="Script" path="res://flower.gd" id="1_tlw3t"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ga0vp"]
+atlas = ExtResource("1_qtnpt")
+region = Rect2(48, 32, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_484sw"]
+atlas = ExtResource("1_qtnpt")
+region = Rect2(48, 48, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mb3w5"]
+atlas = ExtResource("1_qtnpt")
+region = Rect2(48, 75, 16, 25)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_etwt2"]
+atlas = ExtResource("1_qtnpt")
+region = Rect2(48, 96, 16, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8o6h2"]
+atlas = ExtResource("1_qtnpt")
+region = Rect2(48, 32, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_4kwul"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ga0vp")
+}, {
+"duration": 0.5,
+"texture": SubResource("AtlasTexture_484sw")
+}, {
+"duration": 0.5,
+"texture": SubResource("AtlasTexture_mb3w5")
+}, {
+"duration": 0.5,
+"texture": SubResource("AtlasTexture_etwt2")
+}],
+"loop": false,
+"name": &"planted",
+"speed": 1.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8o6h2")
+}],
+"loop": true,
+"name": &"seed",
+"speed": 0.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_gq5bl"]
+radius = 16.0312
+
+[node name="flower" type="Node2D"]
+script = ExtResource("1_tlw3t")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_4kwul")
+animation = &"planted"
+frame = 3
+frame_progress = 1.0
+
+[node name="pickable_flower" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="pickable_flower"]
+shape = SubResource("CircleShape2D_gq5bl")
+
+[node name="growth_time" type="Timer" parent="."]
+wait_time = 10.0
+one_shot = true
+
+[node name="Marker2D" type="Marker2D" parent="."]
+
+[connection signal="body_entered" from="pickable_flower" to="." method="_on_pickable_flower_body_entered"]
+[connection signal="body_exited" from="pickable_flower" to="." method="_on_pickable_flower_body_exited"]
+[connection signal="timeout" from="growth_time" to="." method="_on_growth_time_timeout"]
